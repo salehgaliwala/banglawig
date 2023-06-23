@@ -1,0 +1,41 @@
+{
+  "name": "node-ecommerce",
+  "version": "1.1.1",
+  "description": "this is the rest-API project for ecommerce platform",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "restapi",
+    "ecommerce-api"
+  ],
+  "author": "naim-ul-hassan",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "bson": "^4.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.3",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nanoid": "^3.3.4",
+    "nodemailer": "^6.9.2",
+    "nodemon": "^2.0.15",
+    "satelize": "^0.2.0",
+    "sequelize": "^6.17.0",
+    "winston": "^3.6.0"
+  }
+}
