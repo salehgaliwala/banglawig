@@ -1,0 +1,44 @@
+
+
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" sizeSm="12" sizeMd="6" offsetMd="3">
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+          <ion-input formControlName="name" type="text" placeholder="Full Name"></ion-input>
+          <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+          <div class="birthday">
+            <ion-icon color="medium" name="calendar"></ion-icon>
+            <ion-datetime formControlName="birthDate" mode="ios" displayFormat="DD MMMM,YYYY" pickerFormat="DD MMM YYYY" placeholder="Select Birth date"></ion-datetime>
+          </div>
+          <ion-list class="gender">
+            <ion-radio-group formControlName="gender" mode="ios">
+              <ion-list-header>
+                <ion-label>Gender</ion-label>
+              </ion-list-header>
+
+              <ion-item lines="none">
+                <ion-label>Male</ion-label>
+                <ion-radio color="danger" slot="end" value="male"></ion-radio>
+              </ion-item>
+
+              <ion-item lines="none">
+                <ion-label>Female</ion-label>
+                <ion-radio color="danger" slot="end" value="female"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-button type="submit" class="update-btn" expand="full" color="success">Update</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

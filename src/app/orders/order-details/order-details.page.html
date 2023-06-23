@@ -1,0 +1,85 @@
+<ion-header style="height: 12%;">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/orders"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row *ngIf="isLoading">
+      <ion-col size="12">
+        <div class="spinner">
+          <ion-spinner color="warning"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!isLoading">
+      <ion-col *ngIf="orderDetail" size="12" sizeSM="12" sizeMd="5" sizeLg="5" offsetLg="0.5" offsetMd="0.5">
+        <div class="card">
+            <div class="header">
+              <ion-chip color="tertiary">#{{orderDetail.id}}</ion-chip>
+              <div class="date"> {{orderDetail.createdAt | date : 'MMM d, y, h:mm:ss a'}} </div>
+            </div>
+            <div class="content">
+              <div class="status">
+                status: {{orderDetail.status}}
+              </div>
+              <div class="total">
+                Total: ${{orderDetail.total}}
+              </div>
+            </div>
+        </div>
+      <!-- </ion-col>
+      <ion-col *ngIf="orderDetail" size="12" sizeSM="12" sizeMd="6" sizeLg="6"> -->
+        <span >
+          <div class="card-2" *ngFor="let orderItem of orderDetail.orderItems; let i = index">
+            <img [src]="orderItem.product.featureImage"
+            >
+            <ion-label class="detail">
+              <h3 class="title">{{ orderItem.product.title }}</h3>
+              <p > <span *ngFor="let variationAttr of  orderItem.variation.VariationAttributes"> <strong>{{variationAttr.attribute.title}}</strong>: {{variationAttr.attributeValue.title}} </span></p>
+            </ion-label>
+            <ion-label class="detail">
+              <p class="price">unit cost: {{ orderItem.variation ? orderItem.variation.VariationDetail.price : orderItem.product.price }}</p>
+              <p class="price">Quantity: {{ orderItem.quantity }}</p>
+            </ion-label>
+          </div>
+        </span>
+      </ion-col>
+      <ion-col *ngIf="orderDetail" size="12" sizeSM="12" sizeMd="4" sizeLg="4" offsetLg="1" offsetMd="1">
+        <div class="orderAddress">
+          <p class="subheader">Address section : </p>
+          <p style="margin: 5px" *ngFor="let adr of orderAddress"><strong>{{adr.key}}</strong> : {{adr.value}} </p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="false">
+      <ion-col size="12" sizeSM="12" sizeMd="6" sizeLg="4">
+        <div class="card">
+          <h5 class="ion-text-center">Order Status</h5>
+          <p-timeline [value]="events1" align="alternate" styleClass="customized-timeline">
+            <ng-template pTemplate="marker" let-event>
+              <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+                        <!-- <i [ngClass]="event.icon"></i> -->
+                        <ion-icon color="light" [name]="event.icon"></ion-icon>
+                    </span>
+            </ng-template>
+            <ng-template pTemplate="content" let-event>
+              <ion-card-header>
+                <ion-icon color="success" *ngIf="event.done && event.working" name="checkmark-circle"></ion-icon>
+                <ion-icon *ngIf="!event.done && !event.working" color="danger" name="close-circle"></ion-icon>
+                {{event.status}}</ion-card-header>
+              <ion-card-subtitle *ngIf="event.done && event.working">{{event.date}}</ion-card-subtitle>
+              <ion-progress-bar *ngIf="!event.done && event.working" value="0.25" buffer="0.5"></ion-progress-bar>
+
+            </ng-template>
+          </p-timeline>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,91 @@
+// header
+.rb-logo-center{
+  margin: auto;
+  text-align:center;
+}
+
+ion-header{
+
+  .main-header-menu{
+    padding-bottom: 20px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  ion-searchbar{
+    width: 90%;
+    margin: auto;
+    margin-top: auto;
+    margin-top: -30px;
+    z-index: 15;
+    --border-radius: 30px;
+  }
+}
+
+
+// content
+.rb-category-split{
+
+  ion-card{
+    margin: 0 0 5px 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .secondary-category{
+    background: rgb(255, 146, 5);
+    margin-left: 5px;
+    border-radius: 10px;
+
+    ion-card{
+      margin: 0 0 2px 2px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+  }
+
+  .third-category{
+      background: rgb(255, 105, 5);
+      margin-left: 10px;
+      border-radius: 10px;
+
+      ion-card{
+        margin: 0 0 2px 2px;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+
+}
+
+
+// product section
+.rb-mini-product-list {
+  // position: absolute;
+  // bottom: 0;
+  // right: 0;
+
+    // ion-chip {
+    //   --background: var(--ion-color-dark);
+    //   --color: var(--ion-color-warning);
+    // }
+}
+
+.rb-product-title {
+  padding: 10px;
+}
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+    padding-left: 20px;
+    border: none;
+    border-top: 0.5px solid rgb(221, 221, 221);
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.result{
+  position: fixed;
+  top: 100px;
+  z-index: 999;
+}

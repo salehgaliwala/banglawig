@@ -1,0 +1,191 @@
+<ion-header style="height: 12%">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button  color="danger" [routerLink]="['/', 'tabs', 'carts']">
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge class="cart-badge" color="warning">{{ totalCartQty }}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- <ion-fab style="bottom: 105px; right: 5px;" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="light" (click)="addToWishlist()">
+      <ion-icon [color]="wishlistColor ? 'danger' : 'medium'" name="heart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+        <!-- chat section -->
+  <app-chat-button class="chat-app"></app-chat-button>
+
+  <ion-grid class="fullscreen ion-no-padding">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="light" defaultHref="tabs/home"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+
+    <ion-row *ngIf="singleProductRes">
+      <ion-col *ngIf="!singleProductRes.success" size="12">
+        <div class="flex-col">
+          <ion-icon style="font-size: 64px" name="document" color="medium"></ion-icon>
+          <ion-label color="medium">No product found</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!singleProductRes">
+      <ion-col size="10" sizeSm="10" sizeMd="4" offset="1">
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide>
+            <ion-skeleton-text animated style="width: 100%; height: 400px;"></ion-skeleton-text>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+      <ion-col size="10" sizeSm="10" sizeMd="4" offset="1">
+        <h2 style="font-weight: 700;"><ion-skeleton-text animated style="width: 50%; height: 20px;"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 40%; height: 20px;"></ion-skeleton-text></p>
+        <h3 class="real-price" style="font-weight: 600;"><ion-skeleton-text animated style="width: 20%; height: 20px;"></ion-skeleton-text></h3>
+        <p class="disabled-price" style="font-weight: 500;"><ion-skeleton-text animated style="width: 20%; height: 20px;"></ion-skeleton-text></p>
+        <div><ion-skeleton-text animated style="width: 100%; height: 300px;"></ion-skeleton-text></div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="singleProductRes">
+      <ion-col *ngIf="singleProductRes.success" size="10" sizeSm="10" sizeMd="4" offset="1">
+        <ion-slides pager="true" [options]="slideOpts" #slider>
+          <ion-slide [ngStyle]="{'margin-top.px': 30}">
+            <img
+              [ngStyle]="{
+                'border-radius.px': 10,
+                'box-shadow': '0px 8px 8px rgba(4, 4, 4, 0.11)',
+                'max-height.px': 400
+              }"
+             [src]="selectedVariation ? selectedVariation.VariationDetail.featureImage : singleProduct.featureImage">
+          </ion-slide>
+          <ion-slide [ngStyle]="{'margin-top.px': 30}" *ngFor="let image of singleProduct.Images">
+            <img
+              [ngStyle]="{
+                'border-radius.px': 10,
+                'box-shadow': '0px 8px 8px rgba(4, 4, 4, 0.11)',
+                'max-height.px': 400
+              }"
+             [src]="image.url">
+          </ion-slide>
+        </ion-slides>
+        
+        <ion-slides [ngStyle]="{'margin-top.px': 30}" [options]="thumbnailOptions" (ionSlideTap)="slider.slideTo(slide.index)">
+          
+          <ion-slide *ngFor="let slide of singleProduct.Images; let i = index">
+            <img  [ngStyle]="{'height.px':70 }" [src]="slide.url" alt="Thumbnail" (click)="slider.slideTo(i + 1)">
+          </ion-slide>
+        </ion-slides>
+
+     
+        
+       
+
+      </ion-col>
+
+      <ion-col *ngIf="singleProductRes.success" size="10" sizeSm="10" sizeMd="5" offset="1">
+        <h3 style="font-weight: 700; color:#042c8b">{{ singleProduct.title }}</h3>
+        <!-- <p-rating [(ngModel)]="singleProduct.review.avarage" [readonly]="true" [cancel]="false"></p-rating> -->
+        <h4 class="real-price" style="font-weight: 600;" *ngIf="this.isLoggedIn"><b> {{geodata.currency}} {{selectedVariation ? selectedVariation.VariationDetail.price * geodata.currency_rate : singleProduct.price * geodata.currency_rate}}</b></h4>
+        <!-- <p class="disabled-price" *ngIf="selectedSKUProduct.price !== (selectedPhoneCover ? selectedPhoneCover.price : selectedSKUProduct.discountPrice)" style="font-weight: 500;"><b>${{selectedSKUProduct.price}}</b></p> -->
+
+        <!-- <div (click)="openTextBanner()" style="margin-top: 10px" *ngIf="discountBanner">
+          <ion-img *ngFor="let image of discountBanner.data" [src]="image.value"></ion-img>
+        </div> -->
+
+
+        <div class="shortdescription" [innerHTML]="singleProduct.shortDescription | safeHtml"></div>
+
+        <form [formGroup]="attributeSelectForm" >
+         
+          <ion-list>
+            <ion-list-header lines="full">Select Variations: </ion-list-header>
+            <ion-item *ngFor="let attr of allowedAttributesimages">
+              <ion-label style="text-transform: capitalize;"> {{attr.title}} </ion-label>
+              <input type="hidden" [(ngModel)]="selectedImageId" [formControlName]="attr.id"  />
+              <div *ngFor="let value of divs" style="margin-right:5px"  [class.highlighted]="value.highlighted" (click)="toggleHighlight(value)" >
+                <img style="max-width:50px;margin:0px auto;display: block;"  [src]="'http://localhost:8888/uploads/attributes/'+value.id+'.png'" (click)="selectImage(value.id)"/><br />
+                <ion-label style="text-transform: capitalize;font-size:12px"> {{value.title}} </ion-label>
+              </div>
+
+            </ion-item>
+            <ion-item *ngFor="let attr of allowedAttributes">
+              <ion-label style="text-transform: capitalize;"> {{attr.title}} </ion-label>
+              <ion-select (ionChange)="getVariationId()" [formControlName]="attr.id" interface="popover" placeholder="Select One">
+                
+                <ion-select-option *ngFor="let value of attr.value" [value]="value.id">{{value.title}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <ion-row *ngIf="this.isLoggedIn">
+            <ion-col size="6">
+              <ion-button [disabled]="!selectedVariation" color="secondary" expand="full" class="buy-now" (click)="buyNow()">Buy Now</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button [disabled]="!selectedVariation" color="warning" expand="full" class="add-to-cart" (click)="addToCart()">Add to cart</ion-button>
+            </ion-col>
+          </ion-row>
+          
+          
+          <!-- <ion-button (click)="submited()">submit</ion-button> -->
+        </form>
+        <ion-row>
+          <ion-col>
+            <p>We are offering exclusive prices for wholesalers. <button (click)="openPopup()" class="apply">Apply Here</button> to get a sample </p>
+            <app-popup-form *ngIf="showPopup"></app-popup-form>
+           
+          </ion-col>
+        </ion-row>
+      </ion-col>
+ 
+    </ion-row>
+
+    <ion-row *ngIf="singleProductRes">
+      <ion-col *ngIf="singleProductRes.success" class="ion-margin-top" size="12" class="description">
+        <ion-segment color="tertiary" value="description" (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="description">
+            <ion-label>Description</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="reviews">
+            <ion-label>REviews</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+       
+        <div class="flex desc" [innerHTML]="singleProduct.description | safeHtml" *ngIf="segment === 'description'" color="medium">
+        </div>
+        <div class="review-container"  *ngIf="segment === 'reviews'"
+          color="medium">
+          
+          <div class="review" *ngFor="let review of newReviewsArr">
+            <div class="reviewimagesContainer">
+            <div class="reviewimages" *ngFor="let image of review.images">
+              <img src="{{image.url}}" />
+            </div>
+          </div>
+            <p>{{ review.description }}</p>         
+          </div>
+        </div>
+      </ion-col>
+      
+    </ion-row>
+
+  </ion-grid>
+
+  <!-- <ion-grid class="ion-no-padding" *ngIf="singleProductRes">
+    <ion-row class="actions" *ngIf="singleProductRes.success">
+      <ion-col size="6">
+          <ion-button color="secondary" expand="full" class="buy-now" (click)="buyNow()">Buy Now</ion-button>
+      </ion-col>
+      <ion-col size="6">
+          <div class="square"></div>
+          <ion-button [disabled]="!selectedVariation" color="warning" expand="full" class="add-to-cart" (click)="addToCart()">Add to cart</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+</ion-content>

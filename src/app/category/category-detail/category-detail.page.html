@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>category-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-row style="margin-top: 50px" *ngIf="!isPhoneCover && !isLoading" class="ion-no-padding">
+  <p *ngIf="data.length <= 0"> No Product Available</p>
+  <ion-col [routerLink]="['/', 'tabs', 'products', product.slug]" size="6" sizeSm="6" sizeMd="4" sizeLg="3"
+    *ngFor="let product of data">
+    <ion-card>
+      <ion-img [src]="product.featureImage"></ion-img>
+      <div class="rb-product-title">
+        <ion-note color="medium" class="ion-text-right">{{ product.title }}</ion-note>
+      </div>
+    </ion-card>
+  </ion-col> 
+  <!-- footer void -->
+  <div class="rb-footer-void"></div>
+
+</ion-row>
+</ion-content>

@@ -1,0 +1,175 @@
+:host ::ng-deep {
+    .p-dropdown {
+        width: 14rem;
+        font-weight: normal;
+    }
+
+    .product-name {
+        // font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        margin: 0 -6px;
+        color: #00000070;
+
+        &:hover{
+            color: #2a1fffad;
+            cursor: pointer;
+        }
+    }
+
+    .product-description {
+        margin: 0 0 1rem 0;
+    }
+
+    .product-category-icon {
+        vertical-align: middle;
+        margin-right: .5rem;
+    }
+
+    .product-category {
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    .product-list-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+
+        img {
+            max-width: 150px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin-right: 2rem;
+        }
+
+        .product-list-detail {
+            flex: 1 1 0;
+        }
+
+        .p-rating {
+            margin: 0 0 .5rem 0;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: .5rem;
+            align-self: flex-end;
+        }
+
+        .product-list-action {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p-button {
+            margin-bottom: .5rem;
+        }
+    }
+
+    .product-grid-item {
+        margin: .5em;
+        border: 1px solid #dee2e6;
+
+        .product-grid-item-top,
+        .product-grid-item-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .product-grid-item-content {
+            text-align: center;
+
+            .img-wrapper{
+                width: 100%;
+                height: 300px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+    
+                img {
+                    width: 75%;
+                    //box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                    margin: 2rem 0;
+                }
+            }
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #121212c2;
+        }
+    }
+}
+
+.card {
+    padding: 2rem;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    margin-bottom: 2rem;
+
+    &:hover {
+        box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    }
+}
+
+@media screen and (max-width: 576px) {
+	:host ::ng-deep .product-list-item {
+		flex-direction: column;
+		align-items: center;
+
+		img {
+			width: 150px;
+			margin: 2rem 0;
+		}
+
+		.product-list-detail {
+			text-align: center;
+		}
+
+		.product-price {
+			align-self: center;
+		}
+
+		.product-list-action {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.product-list-action {
+			margin-top: 2rem;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+		}
+	}
+}
+
+.discount-label {
+    position: absolute;
+    display: inline-block;
+    background-color: #FAC94C;
+    /* Background color for the discount label */
+    color: #fff;
+    /* Text color for the discount label */
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: 20px;
+    right: 20px;
+}
+
+.discount-text {
+    font-weight: bold;
+    font-size: 16px;
+}
+.discount-wrapper{position:relative}

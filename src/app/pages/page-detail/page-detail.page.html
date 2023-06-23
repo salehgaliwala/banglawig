@@ -1,0 +1,41 @@
+<ion-header style="height: 12%">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar *ngIf="pageRes.success" color="danger">
+    <ion-buttons>
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+      <ion-title class="ion-text-center">{{ pageRes.result.title }}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid *ngIf="pageRes.success" class="content">
+    <ion-row>
+      <ion-col >
+        <span id="page-content" [innerHTML]="pageRes.result.description | safeHtml"></span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!pageRes.success && isPageAvailable">
+    <ion-row>
+      <ion-col>
+        <div class="spinner" style="height: 60vh">
+          <ion-icon color="medium" style="font-size: 50px" name="document"></ion-icon>
+          <ion-label color="medium">No page found</ion-label>
+          <ion-button color="warning" [routerLink]="['/']">Go to Home</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!isPageAvailable" class="content">
+    <ion-row>
+      <ion-col>
+        <div class="spinner">
+          <ion-spinner color="warning"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- main page -->
+<app-footer></app-footer>
+</ion-content>

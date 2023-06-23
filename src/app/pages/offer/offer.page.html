@@ -1,0 +1,16 @@
+<app-main-header></app-main-header>
+
+<ion-content>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12">
+        <a [routerLink]="['/', 'category', 'phone-cover']">
+          <ion-img *ngIf="!isMobile" src="../../../assets/banners/offer-banner-desktop.jpg"></ion-img>
+          <ion-img *ngIf="isMobile" src="../../../assets/banners/offer-banner-mobile.jpg"></ion-img>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

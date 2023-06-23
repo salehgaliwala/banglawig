@@ -1,0 +1,47 @@
+
+.logo-container{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 25px;
+
+  .site-icon{
+    width: 110px;
+    height: 110px;
+    border-radius:50%;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.login-content{
+  border-radius: 10px 10px 0 0;
+  padding: 20px;
+  margin-top: 70px;
+
+  .rating {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+
+  ion-textarea{
+    border: 1px solid #d7d7d7;
+    box-shadow: 0 8px 8px #ebebeb;
+    margin-bottom: 25px;
+    border-radius: 10px;
+  }
+
+
+  ion-input{
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 8px 8px 0 rgb(236, 236, 236);
+  }
+  ion-button{
+    --border-radius: 15px;
+  }
+}

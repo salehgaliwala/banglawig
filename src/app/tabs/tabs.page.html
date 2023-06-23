@@ -1,0 +1,101 @@
+<ion-tabs class="desktop" *ngIf="desktop">
+  <ion-tab-bar slot="top" class="bottom-tab-bar">
+
+    <ion-tab-button class="logo">
+      <ion-img src="../../assets/logo/logo.png"></ion-img>
+    </ion-tab-button>
+
+    <ion-tab-button></ion-tab-button>
+
+    <ion-tab-button tab="home">
+      <ion-label *ngIf="showTabTitle">Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="toggleMegaMenu()"  class="inner-left-btn">
+      <ion-label *ngIf="showTabTitle">Category</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/','tabs', 'pages', 'contact-us']" class="inner-right-btn">
+      <ion-label *ngIf="showTabTitle">Contact</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/','tabs','pages', 'about-us']"  class="inner-left-btn">
+      <ion-label *ngIf="showTabTitle">About us</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button></ion-tab-button>
+
+    <ion-searchbar class="menu-search" (ionInput)="onKeyInput($event)" (ionChange)="onSearch($event)" debounce="500" showCancelButton="focus" animated placeholder="search products"></ion-searchbar>
+
+    <ion-tab-button [routerLink]="['/','tabs','pages', 'contact-us']"  class="inner-left-btn">
+
+      <ion-chip *ngIf="showTabTitle" style="--background: #FAC94C; --color: #fff; font-weight: bold;">
+        <ion-icon style="color: #fff" name="add-circle"></ion-icon>
+        <ion-label>Customize</ion-label>
+      </ion-chip>
+    </ion-tab-button>
+
+    <ion-tab-button tab="account">
+
+      <ion-chip *ngIf="showTabTitle" color="warning" [outline]="true">
+        <ion-icon style="color: #FAC94C; font-size: 12px" name="person"></ion-icon>
+        <ion-label>Account</ion-label>
+      </ion-chip>
+    </ion-tab-button>
+
+    <ion-tab-button tab="carts" style="display: flex;flex-direction: row;justify-content: flex-start;">
+
+      <ion-icon name="cart-sharp"></ion-icon>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+          <app-search-results *ngIf="!isLoading && searchShow" class="search-results"
+            [ngStyle]="
+              {
+                'max-height.px': searchResult.height,
+                'display': searchResult.display,
+                'overflow': searchResult.overflow
+              }"
+            [data]="searchResultData"></app-search-results>
+
+
+          <ion-spinner class="search-results"  *ngIf="isLoading" color="warning"></ion-spinner>
+
+</ion-tabs>
+<ion-tabs class="mobile" *ngIf="!desktop">
+  <ion-tab-bar slot="bottom" class="bottom-tab-bar">
+    <ion-tab-button tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label *ngIf="showTabTitle">Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/','tabs','category']"    class="inner-left-btn">
+      <ion-icon name="apps-sharp"></ion-icon>
+      <ion-label *ngIf="showTabTitle">Category</ion-label>
+    </ion-tab-button>
+    <ion-tab-button  class="inner-right-btn">
+      <ion-img src="../../assets/icon//Gold.png"></ion-img>
+    </ion-tab-button>
+    <ion-tab-button tab="carts" class="inner-right-btn">
+      <ion-icon name="cart"></ion-icon>
+      <ion-label *ngIf="showTabTitle">Cart</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="account">
+      <ion-icon name="person"></ion-icon>
+      <ion-label *ngIf="showTabTitle">Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+<div class="mega-menu" *ngIf="showMegaMenu">
+  <!-- Mega Menu Content -->
+  <ul>
+    <li *ngFor="let category of menuData">
+      {{ category.title }}
+      <ul>
+        <li *ngFor="let subcategory of category.subcategories">
+        <a href="/tabs/category/{{subcategory.category_id}}">  {{ subcategory.title }} </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

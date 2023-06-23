@@ -1,0 +1,171 @@
+$boxShadow: #0000001c;
+$borderTop: #0808080a;
+$ionInputColor: #4c4a4a;
+
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 8px 8px 0 $boxShadow;
+    padding-left: 20px;
+    border: none;
+    border-top: 0.5px solid $borderTop;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+ion-content{
+  --background: #F5F4F9;
+
+}
+
+
+
+//#F5F4F9
+  .payment-section{
+    border: 1px solid #5effb4;
+    padding: 10px;
+    border-radius: 10px;
+
+    .order-review-section{
+      display: flex;
+      flex-direction: column;
+      color: #666;
+
+      .shipping-cost-section{
+        display: flex;
+        flex-direction: row;
+
+        .shipping-label{
+          width: 40%;
+        }
+        .shipping-total{
+          width: 60%;
+          text-align: right;
+          padding-right: 10px;
+          font-size: 12px;
+        }
+      }
+      .order-amount-section{
+        display: flex;
+        flex-direction: row;
+
+        .total-ordered-amount-text{
+          width: 40%;
+        }
+        .total-ordered-amount{
+          width: 60%;
+          text-align: right;
+          padding-right: 10px;
+        }
+      }
+
+      .grand-total-section{
+        display: flex;
+        flex-direction: row;
+        font-weight: bold;
+        color: #333;
+
+        .grand-total-label{
+          width: 40%;
+        }
+        .grand-total-amount{
+          width: 60%;
+          text-align: right;
+          padding-right: 10px;
+        }
+      }
+    }
+
+    .payment-method-section{
+      margin-top: 15px;
+      border-radius: 10px;
+
+      ion-label{
+        padding-left: 10px;
+      }
+    }
+  }
+
+.checkout {
+  //margin: 20px;
+
+
+
+
+
+  ion-button{
+    margin-top: 20px;
+    --border-radius: 10px;
+  }
+}
+
+.rb-input-shadow{
+  --padding-start: 20px;
+  --padding-end: 10px;
+  margin: 10px 10px 10px auto;
+  border-radius: 4px;
+  box-shadow: 0 8px 8px 0 $boxShadow;
+  border-top: 0.5px solid $borderTop;
+  color: $ionInputColor;
+  background: #fff;
+  margin-bottom: 15px;
+}
+
+ion-note{
+  text-align: left;
+  margin: auto;
+  display: block;
+  padding-left: 20px;
+}
+.address {
+  margin-left: 10px;
+}
+
+.spinner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-form{
+  width: 80%;
+  background: #fbfbfb;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #33333338;
+  margin: auto;
+
+  p{
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 8px;
+  }
+  ion-input{
+    border-radius: 5px;
+    background: #ffffffc2;
+    box-shadow: 0 5px 8px 0 #00000021;
+    padding-left: 10px !important;
+    margin-bottom: 10px;
+    --placeholder-color: #3335;
+  }
+}
+
+.review{
+  width: 90%;
+  background: #fbfbfb;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #33333338;
+  margin: auto;
+  margin-bottom: 20px;
+
+  p{
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 8px;
+  }
+}

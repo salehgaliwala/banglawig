@@ -1,0 +1,41 @@
+<ion-header style="height: 12%">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar color="success">
+    <ion-buttons>
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+      <ion-title class="ion-text-center">Contact Us</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid class="content">
+    <ion-row>
+      <ion-col>
+        <a target="_blank" href="https://m.me/Wigbangladesh">
+          <ion-button>
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+             chat on messenger
+          </ion-button>
+        </a>
+      </ion-col>
+      <ion-col>
+        <a target="_blank" href="https://wa.me/8801836347441">
+          <ion-button color="success">
+            <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+             chat on whatsapp
+          </ion-button>
+        </a>
+      </ion-col>
+      <ion-col>
+        <a href="mailto:support@wigbd.com">
+          <ion-button style="color: #fff" color="danger">
+            <ion-icon slot="start" name="mail"></ion-icon>
+             send mail
+          </ion-button>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-footer></app-footer>
+</ion-content>

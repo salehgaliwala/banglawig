@@ -1,0 +1,50 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" sizeSm="12" sizeMd="6" sizeLg="4" offsetMd="3" offsetLg="4" *ngIf="wishlists">
+
+        <div *ngIf="isLoading" class="spinner">
+          <ion-spinner color="warning"></ion-spinner>
+        </div>
+        <span *ngIf="!isLoading && wishlists.length > 0">
+          <div class="card" *ngFor="let wishlist of wishlists; let i = index">
+            <img
+            (click)="onViewProduct(i)"
+            [ngStyle]="{
+            'background-image': 'url('+wishlist.backgroundImage+'_315x525.png)',
+            'background-size.%': 100,
+            'background-repeat': 'no-repeat',
+            'background-position-x.px': 0,
+            'background-position-y.px': 0
+            }" [src]="wishlist.image">
+            <ion-label class="detail">
+              <h3 (click)="onViewProduct(i)" class="title">{{ wishlist.title }}</h3>
+              <p class="price">
+                <ion-icon style="margin-right: 20px" (click)="onDeleteWishItem(wishlist.id)" class="delete"  name="trash"></ion-icon>
+                <ion-icon class="delete" color="dark" name="cart" (click)="addToCart(wishlist.id ,wishlist.productId, wishlist.SkuId, wishlist.backgroundImage, wishlist.phoneDesignId)"></ion-icon>
+              </p>
+            </ion-label>
+
+          </div>
+        </span>
+        <span *ngIf="!isLoading && wishlists.length <= 0">
+          <div class="empty-box">
+            <ion-icon class="empty-cart-icon" color="medium" name="document"></ion-icon>
+            <ion-label color="medium">Empty Wishlist</ion-label>
+          </div>
+        </span>
+      </ion-col>
+      <ion-col size="12" sizeSm="12" sizeMd="6" sizeLg="4" offsetMd="3" offsetLg="4" *ngIf="!wishlists">
+        <div class="empty-box">
+          <ion-spinner color="warning"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

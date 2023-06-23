@@ -1,0 +1,7 @@
+{
+  "name": "rongobuy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,2 @@
+  <app-header *ngIf="mobileView" [showSearch]="showSearch" (isLoadingSearch)="isLoading($event)" (searchTextFound)="onSearch($event)" [searchData]="searchData"></app-header>
+  <ion-toolbar *ngIf="!mobileView"></ion-toolbar>

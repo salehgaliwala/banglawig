@@ -1,0 +1,123 @@
+    <ion-grid class="footer">
+      <ion-row>
+        <ion-col size="12" sizeSm="12" sizeMd="5" sizeLg="5">
+          <ion-list lines="none">
+            <ion-list-header style="font-weight: bolder;">WIG BANGLADESH</ion-list-header>
+            <ion-item [routerLink]="['/', 'tabs', 'pages', 'contact-us']">
+              <ion-label>Contact</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label style="font-weight: bold; font-size: 18px;">support@wigbd.com</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-buttons>
+                <ion-button>
+                  <a href="https://www.facebook.com/Wigbangladesh/" target="_blank" rel="noopener">
+                    <ion-icon color="light" slot="icon-only" name="logo-facebook"></ion-icon>
+                  </a>
+                </ion-button>
+                <ion-button>
+                  <a href="https://www.instagram.com/wigbangladesh/" target="_blank" rel="noopener">
+                    <ion-icon color="light" slot="icon-only" name="logo-instagram"></ion-icon>
+                  </a>
+                </ion-button>
+                <ion-button>
+                  <a href="https://www.pinterest.com/wigbangladesh/" target="_blank" rel="noopener">
+                    <ion-icon color="light" slot="icon-only" name="logo-pinterest"></ion-icon>
+                  </a>
+                </ion-button>
+                <ion-button>
+                  <a href="https://www.linkedin.com/company/wigbangladesh/" target="_blank" rel="noopener">
+                    <ion-icon color="light" slot="icon-only" name="logo-linkedin"></ion-icon>
+                  </a>
+                </ion-button>
+                <!-- <ion-button>
+                  <a href="https://twitter.com/rongobuy/" target="_blank" rel="noopener">
+                    <ion-icon color="light" slot="icon-only" name="logo-twitter"></ion-icon>
+                  </a>
+                </ion-button> -->
+              </ion-buttons>
+            </ion-item>
+            <ion-item>
+              <ion-label style="font-size: 12px;"><p style="color:#fff">Registered Address : </p><p style="color:#fff">Holding-21, Faidabad Chowrasta, Dakshinkhan, Dhaka-1230</p></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label style="font-size: 12px;"><p style="color:#fff">Office Address : </p><p style="color:#fff">House-25, Road-05, Sector-06, Uttara, Dhaka-1230</p></ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <!-- <ion-col size="0" sizeSm="0" sizeMd="1" sizeLg="1"></ion-col> -->
+        <ion-col size="6" sizeSm="6" sizeMd="1.5" sizeLg="1.5">
+          <ion-list lines="none">
+            <ion-list-header style="color: #fff; font-size: 14px;box-shadow: 14px 1px;margin-top: 20px;">Navigation</ion-list-header>
+            <ion-item [routerLink]="['/', 'tabs', 'home']">
+              <ion-label color="light">Home</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/', 'tabs', 'category']">
+              <ion-label>Category</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="6" sizeSm="6" sizeMd="2.5" sizeLg="2.5">
+          <ion-list lines="none">
+            <ion-list-header style="margin-top: 20px;"></ion-list-header>
+            <ion-item [routerLink]="['/', 'tabs', 'pages', 'return-and-refund']">
+              <ion-label>Return and Refund policy</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-img src="./assets/images/sslcommerz-banner.jpg"></ion-img>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12" sizeSm="12" sizeMd="2" sizeLg="2">
+          <ion-list lines="none">
+            <ion-list-header style="color: #fff; font-size: 14px;box-shadow: 14px 1px;margin-top: 20px;">Connect with us</ion-list-header>
+            <ion-item [routerLink]="['/', 'tabs', 'pages', 'about-us']">
+              <ion-label>About Us</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/', 'tabs', 'pages', 'contact-us']">
+              <ion-label>Contact Us</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/', 'tabs', 'pages', 'career']">
+              <ion-label>Career</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-row>
+        <ion-col size="12" sizeSm="12" sizeMd="6" sizeLg="4">
+          <div class="copyright">
+            <ion-note>© All Rights Reserved | WIG BANGLADESH</ion-note>
+          </div>
+        </ion-col>       
+        <ion-col size="6" sizeSm="6" sizeMd="2" sizeLg="2">
+          <a style="text-decoration: none;" [routerLink]="['/', 'tabs', 'pages', 'privacy-policy']" class="copyright">
+            <ion-note>Privacy policy</ion-note>
+          </a>
+        </ion-col>
+        <ion-col size="6" sizeSm="6" sizeMd="2" sizeLg="1">
+          <a style="text-decoration: none;" [routerLink]="['/', 'tabs', 'pages', 'privacy-policy-bangla']" class="copyright">
+            <ion-note>গোপনীয়তা নীতি</ion-note>
+          </a>
+        </ion-col>
+        <ion-col size="6" sizeSm="6" sizeMd="2" sizeLg="2">
+          <a style="text-decoration: none;" [routerLink]="['/', 'tabs', 'pages', 'return-policy-bangla']" class="copyright">
+            <ion-note>প্রত্যাবর্তন নীতিমালা</ion-note>
+          </a>
+        </ion-col>
+       
+        <ion-col size="6" sizeSm="6" sizeMd="2" sizeLg="2">
+          <a style="text-decoration: none;" [routerLink]="['/', 'tabs', 'pages', 'terms-and-conditions']" class="copyright">
+            <ion-note>Terms & conditions</ion-note>
+          </a>
+        </ion-col>
+        <ion-col size="6" sizeSm="6" sizeMd="2" sizeLg="1">
+          <a style="text-decoration: none;" [routerLink]="['/', 'tabs', 'pages', 'terms-conditions-bangla']" class="copyright">
+            <ion-note>শর্তাবলী</ion-note>
+          </a>
+        </ion-col>
+        
+          
+      </ion-row>
+    </ion-grid>

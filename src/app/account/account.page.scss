@@ -1,0 +1,47 @@
+
+
+
+ion-content{
+  --background: #fff;
+
+    ion-toolbar{
+      --background: #fff;
+    }
+
+
+    .already-logged-in {
+
+      .logged-in-logo {
+        width: 200px;
+        display: block;
+        margin: auto;
+      }
+
+      .main-list {
+        background: #fff;
+
+        ion-item{
+          --background: rgba(255, 255, 255, 0.5);
+          margin: 10px;
+          border-radius: 10px;
+          box-shadow: 0 8px 8px rgba(0, 0, 0, 0.514);
+
+          ion-label{
+            margin-left: 10px;
+          }
+        }
+        .help {
+          --background: linear-gradient(90deg, rgba(252, 252, 252, 0.418) 0%, rgba(0, 251, 96, 0.432) 100%);
+
+          ion-label {
+            color: rgb(10, 85, 0);
+          }
+          a {
+            transform: scale(1.5);
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+}

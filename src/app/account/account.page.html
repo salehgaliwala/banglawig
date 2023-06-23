@@ -1,0 +1,79 @@
+
+<ion-header style="height: 12%">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!userLoggedIn" class="withoutLogin">
+    <ion-toolbar>
+      <ion-segment (ionChange)="onClickLogin()" value="signUp">
+        <ion-segment-button value="signUp">
+          <ion-label>Sign Up</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="logIn">
+          <ion-label>Log In</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <app-signup *ngIf="!loginScreen" (signUpSuccess)="signUpSuccess($event)"></app-signup>
+    <app-login *ngIf="loginScreen"></app-login>
+  </div>
+  <div *ngIf="userLoggedIn" class="already-logged-in">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="12" sizeSm="12" sizeMd="6" offsetMd="3">
+            <div class="logged-in-logo">
+              <ion-img src="../../assets/logo/icon.webp"></ion-img>
+            </div>
+            <ion-list class="main-list">
+              <ion-item lines="none">
+                <ion-avatar>
+                  <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+                </ion-avatar>
+                <ion-label>
+                  <h3>Welcome to WIGBD</h3>
+                  <p>The home of premium products</p>
+                </ion-label>
+              </ion-item>
+
+              <!-- <ion-item [routerLink]="['/', 'tabs', 'account', 'address']" detail>
+                <ion-icon name="business"></ion-icon>
+                <ion-label>Address</ion-label>
+              </ion-item> -->
+
+
+              <ion-item [routerLink]="['/', 'tabs', 'orders']" detail>
+                <ion-icon name="cube"></ion-icon>
+                <ion-label>Orders</ion-label>
+              </ion-item>
+
+              <ion-item [routerLink]="['/', 'tabs', 'pages', 'order-tracking']" detail>
+                <ion-icon name="search-circle"></ion-icon>
+                <ion-label>Orders Tracking</ion-label>
+              </ion-item>
+
+              <ion-item class="help">
+                <ion-avatar>
+                  <img src="https://e7.pngegg.com/pngimages/766/525/png-clipart-computer-icons-technical-support-customer-service-call-centre-others-miscellaneous-service-thumbnail.png">
+                </ion-avatar>
+
+                <ion-label>
+                  <h3>How can we help you ?</h3>
+                  <p>0196600007</p>
+                </ion-label>
+                <a href="tel:+880196600007">
+                  <ion-icon color="success" name="call"></ion-icon>
+                </a>
+
+              </ion-item>
+
+              <ion-item (click)="logOut()">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <ion-label>Log Out</ion-label>
+              </ion-item>
+            </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

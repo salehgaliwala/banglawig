@@ -1,0 +1,193 @@
+
+<ion-header style="height: 12%">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content>
+    <ion-grid
+    *ngIf="homepage.length <= 0"
+     >
+      <ion-row>
+        <ion-col>
+          <ion-slides bulletActiveClass="bulletActive" pager="true" scrollbar="true" [options]="slideOpts">
+            <ion-slide *ngFor="let s of skeleton">
+              <ion-skeleton-text animated style="width: 100%; height: 300px;"></ion-skeleton-text>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-slides class="emergency-slider" pager="true" scrollbar="false" [options]="emergencyCatSlider">
+            <ion-slide *ngFor="let s of skeleton">
+                <ion-skeleton-text animated style="width: 100%; height: 200px;"></ion-skeleton-text>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="11" offset="0.5" *ngFor="let s of skeleton">
+          <ion-skeleton-text animated style="width: 100%; height: 300px;"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <ion-grid
+      class="ion-no-padding" *ngFor="let homeSection of homepage; let homeIndex = index">
+      <ion-row *ngIf="homeSection.isActive === 1">
+        <ion-col>
+          <div *ngIf="homeIndex" class="header-center">
+            <p class="section-small-header">{{ homeSection.bgColor }}</p>
+            <p class="primary-title">
+              {{ homeSection.sectionTitle.split('xx')[0] }}
+            </p>
+            <span class="secondary-title">
+              {{ homeSection.sectionTitle.split('xx')[1] ? homeSection.sectionTitle.split('xx')[1] : ''  }}
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- main slider -->
+      <ion-row *ngIf="homeSection.sectionType === 'slider' && homeSection.isActive === 1">
+        <ion-col *ngIf="!homeIndex">
+          <ion-slides [ngClass]="{'slider-margin': !mobileView}" pager="true" scrollbar="true" [options]="slideOpts">
+            <ion-slide *ngFor="let slide of homeSection.sectioncontent;let i=index" (click)="onClickHomeContent(slide.slug)">
+              <ion-img style="width: 100%;" [src]="slide.imageUrl"></ion-img>
+              <div class="slider_texts" [ngStyle]="{
+                'left': slide.left,
+                'right': slide.right
+              }">
+                <div class="slider_title">{{slide.title}}</div>
+                <div class="slider_content">{{slide.content}}</div>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin: 0 20px" *ngIf="homeSection.sectionType === 'emergency' && homeSection.isActive === 1">
+        <ion-col size="12" sizeSm="12" sizeMd="3" sizeLg="3" *ngFor="let emergency of homeSection.sectioncontent; let i = index" (click)="onClickHomeContent(emergency.slug)">
+          <!-- <ion-slides class="emergency-slider" pager="true" scrollbar="false" [options]="emergencyCatSlider">
+            <ion-slide *ngFor="let emergency of homeSection.sectioncontent; let i = index" (click)="onClickHomeContent(emergency.slug)">
+                <div class="rb-emergency-info">
+                  <div class="icon">
+                    <img [src]="emergency.imageUrl" alt="icon">
+                  </div>
+                  <ion-label style="margin: 10px; text-align: left;">{{emergency.title}}</ion-label>
+                </div>
+            </ion-slide>
+          </ion-slides> -->
+          <div class="emergency-slider">
+            <div>
+                <div class="rb-emergency-info">
+                  <div class="icon">
+                    <img [src]="emergency.imageUrl" alt="icon">
+                  </div>
+                  <ion-label style="margin: 10px; text-align: left; color: #1F2227;">{{emergency.title}}</ion-label>
+                  <p>{{emergency.content}}</p>
+                </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- other slider -->
+      <ion-row *ngIf="homeSection.sectionType === 'slider' && homeSection.isActive === 1">
+        <ion-col *ngIf="homeIndex" size="11" offset="0.5">
+          <ion-slides class="cat-slider-2" pager="true" scrollbar="false" [options]="catSlider">
+            <ion-slide *ngFor="let slide of homeSection.sectioncontent; let i = index" (click)="onClickHomeContent(slide.slug)">
+              <!-- <ion-card [ngStyle]="{'background': 'var(--ion-color-'+colors[i+2]+')'}"> -->
+              <div>
+                <ion-img [src]="slide.imageUrl"></ion-img>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+
+      <!-- category section -->
+      <ion-row style="margin: 0 20px;" *ngIf="homeSection.sectionType === 'category' && homeSection.isActive === 1">
+        <ion-col size="11" offset="0.5">
+          <ion-slides #categorySlide class="cat-slider" pager="true" scrollbar="false" [options]="catSlider">
+            <ion-slide *ngFor="let phoneCat of homeSection.sectioncontent; let i = index" (click)="onClickHomeContent(phoneCat.slug)">
+              <!-- <ion-card [ngStyle]="{'background': 'var(--ion-color-'+colors[i+2]+')'}"> -->
+              <div class="img-container">
+                <img [src]="phoneCat.imageUrl">
+                <span>{{phoneCat.title}}</span>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <!-- Video section -->
+      <ion-row *ngIf="homeSection.sectionType === 'video' && homeSection.isActive === 1">
+        <ion-col size="11" offset="0.5" >
+          <ion-slides class="cat-slider" pager="true" scrollbar="false" [options]="catSlider2">
+            <ion-slide *ngFor="let videoContent of homeSection.sectioncontent; let i = index">
+              <!-- <ion-card *ngIf="videoContent.imageUrl" [ngStyle]="{'background': 'var(--ion-color-'+colors[i+2]+')'}"> -->
+              <ion-card *ngIf="videoContent.imageUrl">
+               <iframe width="100%" height="200" src="https://www.youtube.com/embed/{{videoContent.imageUrl}}" [title]="videoContent.title" frameborder="0" allowfullscreen ng-show="showvideo"></iframe>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <!-- banner section -->
+      <ion-row [ngStyle]="{'background-position-x.px': bannerBg.positionX}" class="bg-drops" *ngIf="homeSection.sectionType === 'banner' && homeSection.isActive === 1">
+        <ion-col size="12" *ngFor="let banner of homeSection.sectioncontent; let i = index" (click)="onClickHomeContent(banner.slug)">
+          <div class="banner-images" [ngStyle]="{'width.%': banner.width}">
+            <img
+              [ngStyle]="{
+                'border-radius.px': banner.height ? banner.height : 0,
+                'width.%': 100
+              }"
+              [src]="banner.imageUrl" >
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- products -->
+      <ion-row *ngIf="homeSection.sectionType === 'products' && homeSection.isActive === 1">
+        <ion-col>
+          <app-display-products></app-display-products>
+        </ion-col>
+      </ion-row>
+      <!-- products -->
+
+      <!-- banner grid -->
+      <ion-row *ngIf="homeSection.sectionType === 'banner_grid' && homeSection.isActive === 1">
+        <div style="padding: 10px" class="p-grid nested-grid">
+          <div class="p-col-6" style="padding-right: 0px">
+            <div class="box box-stretched">
+              <img style="width: 100%; border-radius: 10px 0px 0px 10px; box-shadow: 0px 5px 8px #0000004b;" [src]="homeSection.sectioncontent[0].imageUrl" alt="" (click)="onClickHomeContent(homeSection.sectioncontent[0].slug)">
+            </div>
+          </div>
+          <div class="p-col-6">
+            <div class="p-grid">
+              <div class="p-col-12" style="padding-bottom: 0px">
+                  <div class="box">
+                    <img style="width: 100%; border-radius: 0px 10px 0px 0px; box-shadow: 0px 5px 8px #0000004b;" [src]="homeSection.sectioncontent[1].imageUrl" alt="" (click)="onClickHomeContent(homeSection.sectioncontent[0].slug)">
+                  </div>
+              </div>
+
+              <div class="p-col-12">
+                  <div class="box">
+                    <img style="width: 100%; border-radius: 0px 0px 10px 0px; box-shadow: 0px 5px 8px #0000004b;" [src]="homeSection.sectioncontent[2].imageUrl" alt="" (click)="onClickHomeContent(homeSection.sectioncontent[0].slug)">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-row>
+      <!-- banner grid /-->
+    </ion-grid>
+     <!-- <iframe width="100%" height="400px" src="http://localhost:8100/category/phone-cover" title="models"></iframe> -->
+    <app-chat-button class="chat-app"></app-chat-button>
+    <app-footer></app-footer>
+</ion-content>
+
+

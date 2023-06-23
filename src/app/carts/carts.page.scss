@@ -1,0 +1,169 @@
+
+
+ion-content{
+  --background: rgb(255, 252, 244);
+
+    ion-toolbar{
+      --background: rgb(255, 252, 244);
+    }
+
+
+    .card{
+      // display: flex;
+      // flex-direction: row;
+      // justify-content: center;
+      // align-items: center;
+      // background: floralwhite;
+      // margin: 10px 0 20px 35px;
+      // border-radius: 10px;
+      // box-shadow: inset 0px 8px 8px 3px #c1c1c130;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      background: floralwhite;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 8px 3px #c1c1c130;
+
+      img{
+        width: 20%;
+        margin-left: -31px;
+        margin-top: 15px !important;
+        margin-bottom: 15px !important;
+      }
+
+      .detail{
+        min-width: 185px;
+        margin: 10px;
+
+        .title{
+          font-weight: bold;
+          font-size: 17px;
+          color: #000000c7;
+        }
+
+        .price{
+          font-weight: bold;
+          color: #888;
+
+          .delete{
+            background: #3333330f;
+            padding: 5px;
+            border-radius: 50%;
+            color: #f74b4b;
+            font-size: 16px;
+
+            &:hover{
+              background: rgba(0, 0, 0, 0.164);
+              font-size: 20px;
+            }
+          }
+        }
+
+      }
+
+      .actions{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #e3e3e3;
+        border-radius: 30px;
+        box-shadow: 0px 5px 5px 0 #a1a1a180;
+        padding: 2px;
+        margin-right: 5px;
+
+        ion-icon{
+          background-color: var(--ion-color-warning);
+          color: #fff;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          box-shadow: 0 5px 5px 0 #0606063d;
+        }
+
+
+
+        ion-button{
+          --border-radius: 50%;
+          // width: 30px;
+          // height: 30px;
+        }
+      }
+    }
+
+
+    .checkout{
+      align-items: flex-end;
+      display: flex;
+
+      .proceed{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+
+  
+        .total-section{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 20px;
+  
+  
+          .total-text{
+            width: 50%;
+            text-align: left;
+          }
+  
+          .total{
+            width: 50%;
+            font-weight: bold;
+            text-align: right;
+          }
+        }
+  
+        ion-button{
+          width: 100%;
+        }
+  
+      }
+    }
+
+
+  .empty-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .empty-cart-icon {
+      font-size: 64px;
+    }
+  }
+}
+
+.coupon-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  ion-input{
+    box-shadow: inset 3px 5px 8px #00000042;
+    border-radius: 5px;
+  }
+}
+
+  .discountLabel{
+    background: #ff2c2c;
+    border-radius: 0 10px 0px 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 3px 30px;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }

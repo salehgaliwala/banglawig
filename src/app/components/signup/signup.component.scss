@@ -1,0 +1,33 @@
+
+.logo-container{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 25px;
+
+  .site-icon{
+    width: 110px;
+    height: 110px;
+    border-radius:50%;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.login-content{
+  border-radius: 10px 10px 0 0;
+  padding: 20px;
+  margin-top: 50px;
+
+  ion-input{
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 5px 8px 0 #00000021;
+    padding-left: 10px !important;
+    --placeholder-color: #3335;
+  }
+  ion-button{
+    --border-radius: 15px;
+  }
+}

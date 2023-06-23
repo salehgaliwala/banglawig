@@ -1,0 +1,100 @@
+
+
+ion-content{
+  --background: rgb(255, 252, 244);
+
+    ion-toolbar{
+      --background: rgb(255, 252, 244);
+    }
+
+
+    .card {
+      background: #c4c4c4;
+      border-radius: 5px;
+      box-shadow: 0px 8px 8px 0px #00000017;
+      padding: 10px;
+      margin-bottom: 25px;
+
+      .header {
+        width: 100%;
+        display: flex;
+
+        ion-chip{
+          width: 50%;
+        }
+
+        .date{
+          width: 50%;
+          text-align: right;
+          margin-top: 10px;
+          margin-right: 8px;
+          color: #888;
+          font-weight: bold;
+          font-size: 10px;
+        }
+      }
+
+      .content{
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        font-size: 14px;
+
+        .status{
+          width: 50%;
+        }
+
+        .total{
+          width: 50%;
+          text-align: right;
+        }
+      }
+
+      .actions{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        margin: 5px;
+
+        ion-button{
+          width: 100%;
+        }
+      }
+    }
+
+
+    .proceed{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+
+      .total-section{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+
+
+        .total-text{
+          width: 50%;
+          text-align: left;
+        }
+
+        .total{
+          width: 50%;
+          font-weight: bold;
+          text-align: right;
+        }
+      }
+
+      ion-button{
+        width: 100%;
+      }
+
+    }
+}

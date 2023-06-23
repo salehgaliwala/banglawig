@@ -1,0 +1,60 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="fromModal !== undefined || fromModal">
+      <ion-button (click)="onCloseModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" sizeSm="12" sizeMd="6" offsetMd="3">
+        <form [formGroup]="addressForm" (ngSubmit)="updateProfile()">
+          <ion-note class="ion-text-center" color="danger" *ngIf="(!addressForm.get('name').valid && addressForm.get('name').touched) || !validScheme.name">Please provide valid address</ion-note>
+          <ion-input formControlName="name" type="text" placeholder="Full Name *"></ion-input>
+            <ion-note class="ion-text-center" color="danger" *ngIf="(!addressForm.get('email').valid && addressForm.get('email').touched) || !validScheme.email">Please provide valid email</ion-note>
+          <ion-input formControlName="email" type="email" placeholder="Email *"></ion-input>
+
+            <ion-note class="ion-text-center" color="danger" *ngIf="(!addressForm.get('phone').valid && addressForm.get('phone').touched) || !validScheme.phone">Please provide valid phone number</ion-note>
+          <ion-input formControlName="phone" type="text" placeholder="Phone *"></ion-input>
+
+            <ion-note class="ion-text-center" color="danger" *ngIf="(!addressForm.get('division').valid && addressForm.get('division').touched) || !validScheme.division">Please provide valid division</ion-note>
+          <ion-select *ngIf="divisions" (ionChange)="divisionSelected($event)" formControlName="division" placeholder="Select Division *" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let division of divisions" [value]="division.name">{{division.name}}</ion-select-option>
+          </ion-select>
+
+
+            <ion-note class="ion-text-center" color="danger" *ngIf="(!addressForm.get('city').valid && addressForm.get('city').touched) || (!validScheme.city && districts)">Please provide valid District</ion-note>
+          <ion-select *ngIf="districts" (ionChange)="citySelected($event)" formControlName="city" placeholder="Select district *" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let district of districts" [value]="district.name">{{district.name}}</ion-select-option>
+          </ion-select>
+
+
+            <ion-note [hidden]="areaDisable" class="ion-text-center" color="danger" *ngIf="(!addressForm.get('area').valid && addressForm.get('area').touched) || (!validScheme.area && area)">Please provide valid area</ion-note>
+          <ion-select [hidden]="areaDisable" *ngIf="area" (ionCancel)="areaBlur($event)" (ionChange)="areaSelected($event)" formControlName="area" placeholder="Select area *" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let a of area" [value]="a.name">{{a.name}}</ion-select-option>
+          </ion-select>
+
+            <ion-note class="ion-text-center" color="danger" *ngIf="(!addressForm.get('address').valid && addressForm.get('address').touched) || (!validScheme.address && isAreaSelected)">Please provide valid address</ion-note>
+          <ion-input *ngIf="divisions && districts && isAreaSelected" formControlName="address" type="text" placeholder="Address *"></ion-input>
+          <ion-input *ngIf="divisions && districts && isAreaSelected" formControlName="additional" type="text" placeholder="additional"></ion-input>
+          <ion-input *ngIf="divisions && districts && isAreaSelected" formControlName="type" type="text" placeholder="type (home/ofice/...etc)"></ion-input>
+          <ion-list [hidden]="true" *ngIf="divisions && districts && isAreaSelected">
+            <ion-item lines="none">
+              <ion-label>Make this as default Address</ion-label>
+              <ion-checkbox formControlName="default" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+          <ion-button [disabled]="!addressForm.valid" type="submit" class="update-btn" expand="full" color="success">Add Address</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

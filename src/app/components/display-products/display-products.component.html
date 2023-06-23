@@ -1,0 +1,68 @@
+<div class="card">
+  <p-dataView #dv [value]="products" [loading]="isLoading" [lazy]="false" [paginator]="true" [rows]="10" filterBy="title"
+      [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+      <ng-template pTemplate="header">
+          <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+              <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+              <!-- <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by Name" (onChange)="dv.filter($event.target.value)">
+              </span> -->
+              <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                  <i class="pi pi-search"></i>
+                  <p-button [routerLink]="['/', 'tabs', 'category']"> View All</p-button>
+              </span>
+              <!-- <p-dataViewLayoutOptions></p-dataViewLayoutOptions> -->
+          </div>
+      </ng-template>
+      <!-- <ng-template let-product pTemplate="listItem">
+          <div class="p-col-12">
+              <div class="product-list-item">
+                  <div class="product-list-detail">
+                      <img [src]="product.backgroundImage" [alt]="product.title"/>
+                      <div class="product-name">{{product.title}}</div>
+
+                      <p-rating [ngModel]="5" [readonly]="true" [cancel]="false"></p-rating>
+                      <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.categoryId}}</span>
+                  </div>
+                  <div class="product-list-action">
+                      <span class="product-price">${{product.productPrice}}</span>
+                      <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="false"></p-button>
+
+                  </div>
+              </div>
+          </div>
+      </ng-template> -->
+      console.log(product);
+      <ng-template let-product pTemplate="gridItem">
+          <div class="p-col-12 p-md-3"  (click)="selectProduct(product.slug)">
+                <div class="discount-wrapper" *ngIf="product.discount > 0" >
+                    <div class="discount-label">
+                        <span class="discount-text">20% OFF</span>
+                    </div>
+                </div>
+                
+              <div class="product-grid-item card">
+                  <!-- <div class="product-grid-item-top">
+                      <div>
+                          <i class="pi pi-tag product-category-icon"></i>
+                          <span class="product-category">{{product.categoryId}}</span>
+                      </div>
+                  </div> -->
+                  <div class="product-grid-item-content">
+                      <div class="img-wrapper">
+                          <img [src]="product.featureImage" [alt]="product.title"/>
+                      </div>
+                      <div class="product-name">{{product.title}}</div>
+                      <!-- <div class="product-description">{{product.description}}</div> -->
+                      <p-rating [ngModel]="5" [readonly]="true" [cancel]="false"></p-rating>
+                  </div>
+                  <div class="product-grid-item-bottom">
+                      <span class="product-price" *ngIf="this.isLoggedIn">{{geodata.currency}}{{product.price * geodata.currency_rate }}</span>
+                      <p-button (click)="selectProduct(product.slug)" icon="pi pi-shopping-cart" [disabled]="false" *ngIf="this.isLoggedIn"></p-button>
+                      <p *ngIf="!this.isLoggedIn" style="text-align:center">Login to see price</p>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-dataView>

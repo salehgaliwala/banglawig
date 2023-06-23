@@ -1,0 +1,28 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+.popup-close{position: absolute;top:10px;right:10px}
+.popup-submit {padding: 5px;
+    margin: 0px auto;
+    display: block;
+    background: #FAC94C;
+    color: #fff;
+cursor: pointer;
+}
+ .popup-submit:disabled{opacity: 0.5;cursor: default;}

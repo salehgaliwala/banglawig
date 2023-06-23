@@ -1,0 +1,42 @@
+
+.logo-container{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 25px;
+
+  .site-icon{
+    width: 110px;
+    height: 110px;
+    border-radius:50%;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.login-content{
+  border-radius: 10px 10px 0 0;
+  padding: 20px;
+  margin-top: 150px;
+
+  .resend-otp{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ion-input{
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 8px 8px 0 #00000038;
+  }
+  ion-button{
+    --border-radius: 15px;
+  }
+}
+
+:host ::ng-deep .otp-input:focus-visible {
+  outline: 2px solid var(--ion-color-success);
+}

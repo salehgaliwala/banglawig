@@ -1,0 +1,165 @@
+
+// content
+ion-content{
+  //--background: #fbfcff;
+  --background: #FCFCFC;
+}
+
+// slider section
+ion-slides {
+  --bullet-background-active: var(--ion-color-warning);
+  --bullet-background: var(--ion-color-dark);
+  --scroll-bar-background: var(--ion-color-warning);
+  margin-bottom: 20px;
+}
+
+.slider_texts{
+  position: absolute;
+  color: #fff;
+
+  .slider_title{
+    text-shadow: 0px 5px 5px #333;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+  }
+  .slider_content{
+    text-shadow: 0px 5px 5px #333;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-top: 15px;
+  }
+}
+
+// emergency section
+.emergency-slider{
+  margin: 0 10px;
+
+  .rb-emergency-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+    width: 100%;
+    margin-left: 10px;
+    background: #FFFBF2;
+
+    .icon{
+      margin: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #daaa4e36;
+      padding: 10px;
+      border-radius: 10px;
+      width: 75px;
+      height: 75px;
+      img{
+        border-radius: 10px;
+        width: 75px;
+      }
+    }
+    ion-label{
+      font-size: 15px;
+      font-weight: bold;
+    }
+    p{
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      text-align: center;
+      padding: 0 20px;
+      color: #414751;
+    }
+  }
+}
+.cat-slider {
+  // background: #94ff5a00;
+  // border-radius: 10px;
+  // box-shadow: inset 0 8px 8px #3b3b3b45;
+
+  .img-container{
+    border: 2px solid #3334;
+    border-radius: 10px;
+
+    img{
+      width: 80%;
+      margin: auto;
+      padding: 15px;
+      border-radius: 25px;
+    }
+    span{
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: capitalize;
+      display: block;
+      margin: -10px 0 10px 0;
+      color: #666666;
+    }
+  }
+}
+.cat-slider-2 {
+  background: transparent;
+  border-radius: 10px;
+  // box-shadow: inset 0 8px 8px #3b3b3ba1;
+}
+.spinner{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.header-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // margin-top: 50px;
+  // margin-bottom: 10px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-size: 18px;
+  font-weight: bold;
+
+  .section-small-header{
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--ion-color-warning);
+  }
+  .primary-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin:12px 0;
+  }
+  .secondary-title{
+    font-size: 12px;
+    line-height: 0px;
+    font-weight: 500;
+    color: #666;
+  }
+}
+.banner-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 8px 6px 3px rgba(12, 12, 12, 0.335);
+}
+.bg-drops {
+  background: url("https://i0.wp.com/www.cssscript.com/wp-content/uploads/2017/12/Animated-Particles-Background.png?fit=499%2C386&ssl=1");
+}
+.chat-app{
+  position: fixed;
+  right: -5px;
+  bottom: 50px;
+  z-index: 2000;
+}
+.bulletActive{
+  width: 100px;
+  color: red;
+  background: red;
+}

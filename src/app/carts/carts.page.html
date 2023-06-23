@@ -1,0 +1,77 @@
+<ion-header style="height: 12%">
+  <app-main-header></app-main-header>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" sizeSm="6" sizeMd="6" sizeLg="6" *ngIf="carts">
+        <span *ngIf="carts.success">
+          <div class="card" *ngFor="let cartItem of carts.result.cartItems; let i = index">
+            <img [src]="cartItem.product.featureImage">
+            <ion-label class="detail">
+              <h3 class="title">{{ cartItem.product.title }}</h3>
+              <p class="price">
+                {{geodata.currency}}
+                <span>{{ cartItem.variation ? cartItem.variation.VariationDetail.price * geodata.currency_rate : cartItem.product.price * geodata.currency_rate}}</span>
+              </p>
+              <p>
+                <span *ngFor="let variationAttr of  cartItem.variation.VariationAttributes"> <strong>{{variationAttr.attribute.title}}</strong>: {{variationAttr.attributeValue.title}} </span>
+              </p>
+              <p class="price">
+                <ion-icon (click)="onDeleteCartItem(cartItem.id)" class="delete"  name="trash"></ion-icon>
+                <!-- <ion-buttons>
+                  <ion-button>
+                    <ion-icon name="trash"></ion-icon>
+                  </ion-button>
+                </ion-buttons> -->
+              </p>
+            </ion-label>
+            <div class="actions">
+                <ion-icon name="add" (click)="addToCart({productId: cartItem.productId, variationId: cartItem.variationId, quantity: 1})"></ion-icon>
+              <ion-label>{{ cartItem.quantity }}</ion-label>
+                <ion-icon name="remove" (click)="addToCart({productId: cartItem.productId, variationId: cartItem.variationId, quantity: -1})"></ion-icon>
+            </div>
+          </div>
+        </span>
+        <span *ngIf="!carts.success">
+          <div class="empty-box">
+            <ion-icon class="empty-cart-icon" color="medium" name="document"></ion-icon>
+            <ion-label color="medium">{{carts.message}}</ion-label>
+          </div>
+        </span>
+      </ion-col>
+      <ion-col size="12" sizeSm="6" sizeMd="6" sizeLg="6" *ngIf="!carts">
+        <div class="empty-box">
+          <ion-spinner color="warning"></ion-spinner>
+        </div>
+      </ion-col>
+
+      <ion-col size="2">
+        <p-divider [layout]="layout"></p-divider>
+      </ion-col>
+
+      <!-- <p-divider [layout]="layout"></p-divider> -->
+
+
+
+      <ion-col class="checkout" size="12" sizeSm="4" sizeMd="6" sizeLg="4">
+        <div class="proceed" *ngIf="carts">
+          <div class="total-section">
+            <span class="total-text"> Total </span>
+            <span>
+              <span class="total"> {{geodata.currency}} {{ subTotal * geodata.currency_rate}}</span>
+            </span>
+          </div>
+          <ion-button color="warning" (click)="onProceedCheckout()" > Proceed Checkout </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

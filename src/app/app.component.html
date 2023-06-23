@@ -1,0 +1,38 @@
+<ion-app>
+  <ion-menu [swipeGesture]="false" side="start" menuId="custom" contentId="main" class="my-custom-menu">
+    <ion-header>
+      <ion-toolbar color="warning">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+      <div class="main-menu-item" *ngFor="let menu of menus; let i = index">
+        <ion-item lines="none" (click)="onClickMenu(i)">
+          <ion-icon color="dark" [name]="menu.icon" slot="start"></ion-icon>
+          {{ menu.title }}
+          <ion-icon color="warning" slot="end" [name]="menuIcon(i)"></ion-icon>
+        </ion-item>
+        <ion-menu-toggle *ngIf="menu.show"  auto-hide="false">
+          <ion-list lines="none">
+            <ion-item
+              *ngFor="let subMenu of menu.children; let si = index"
+              (click)="onClickMenuSub(i, si)"
+              menuclose
+              [hidden]="!menu.show"
+              [routerLink]="subMenu.route"
+              menuClose
+              class="sub-menu">
+              <ion-icon color="warning" [name]="subMenu.icon" slot="start"></ion-icon>
+              {{subMenu.title}}
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </div>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <div class="rb-footer-void"></div>
+</ion-app>

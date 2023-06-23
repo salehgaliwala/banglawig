@@ -1,0 +1,50 @@
+
+
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+
+    <!-- <ion-title class="ion-text-center">Address</ion-title> -->
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addAddressRef()" [routerLink]="['/', 'tabs', 'account', 'address', 'add-address']">
+        <ion-icon slot="icon-only" color="success" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+  <ion-grid>
+    <ion-row *ngIf="addressLoading">
+      <ion-col size="12" sizeSm="12" sizeMd="6" offsetMd="3">
+        <div class="spinner">
+          <ion-spinner color="warning"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!addressLoading">
+      <ion-col *ngFor="let address of addresses" size="12" sizeSm="12" sizeMd="6" offsetMd="3">
+        <ion-card [ngClass]="{'active': address.default==='1'}">
+          <ion-card-header class='card-header'>
+            {{address.type}}
+            <span *ngIf="address.default==='1'"> (Default Address) </span>
+            <ion-buttons>
+              <ion-button (click)="onEdit(address)" color="danger">
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label>
+              <p>{{address.name}} : {{address.phone}}</p>
+              <p>{{address.address}}, {{address.city}}, {{address.area}}, {{address.division}}</p>
+            </ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header style="height: 12%;">
+  <app-main-header></app-main-header>
+</ion-header>
+<ion-content>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center" style="margin-left: -50px">Orders</ion-title>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let order of orders">
+        <div class="card">
+            <div class="header">
+              <ion-chip color="tertiary">#{{order.id}}</ion-chip>
+              <div class="date"> {{ order.createdAt | date : 'MMM d, y, h:mm:ss a' }} </div>
+            </div>
+            <div class="content">
+              <div class="status">
+                status: {{order.status}}
+              </div>
+              <div class="total">
+                Total: ${{order.total}}
+              </div>
+            </div>
+            <div class="actions">
+              <ion-button expand="block" color="tertiary" [routerLink]="['/','tabs', 'orders', order.id]"> View Details </ion-button>
+            </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-footer></app-footer>
+</ion-content>
