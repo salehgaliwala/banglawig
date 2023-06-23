@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "../node_modules/ng-zorro-antd/ng-zorro-antd.min.css";
+
+.pagination{
+        display: flex;
+        justify-content: space-between;
+}
+.spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+}
+.section-header{
+        border-bottom: 1px solid #333;
+        margin-bottom: 50px;
+        padding-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+}
+.fab-button {
+        position: fixed;
+        bottom: 10%;
+        right: 5%;
+        box-shadow: 1px 2px 3px #3335;
+}

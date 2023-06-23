@@ -1,0 +1,83 @@
+<nz-table #nestedTable [nzData]="attributes" [nzPageSize]="10">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>CREATED AT</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+            <tr>
+              <td [(nzExpand)]="data.expand" ></td>
+              <td>{{ data.id }}</td>
+              <td>{{ data.title }}</td>
+              <td>{{ data.description }}</td>
+              <td>{{ data.createdAt }}</td>
+              <td>
+                <a [routerLink]="['/', 'pages', 'attributes', 'edit', data.id]">EDIT</a>
+              </td>
+            </tr>
+            <tr [nzExpand]="!!(data.expand)">
+              <button nz-button nzShape="circle" nzSize="small" nzType="primary" (click)="openAttributeValueModal(data.id)" >
+                <i nz-icon nzType="plus" nzTheme="outline"></i>
+              </button>
+              <nz-table #innerTable [nzData]="data.attributeValue ? data.attributeValue : []" nzSize="middle" [nzShowPagination]="false">
+                <thead>
+                  <tr>
+                    <th>Options</th>
+                    <th>description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let attrValue of innerTable.data; let attrvalueIndex = index">
+                    <td>
+                      <nz-badge [nzStatus]="'success'" [nzText]="attrValue.title"></nz-badge>
+                    </td>
+                    <td>{{ attrValue.description }}</td>
+                    <td>
+                      <span class="table-operation">
+                        <a class="operation" (click)="openEditAttrValueModal(data.id, attrvalueIndex)">
+                          Edit
+                        </a>
+                        <!-- <nz-dropdown-menu #menu="nzDropdownMenu">
+                          <ul nz-menu>
+                            <li nz-menu-item>
+                              <a>Action 1</a>
+                            </li>
+                            <li nz-menu-item>
+                              <a>Action 2</a>
+                            </li>
+                          </ul>
+                        </nz-dropdown-menu> -->
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <a class="operation">Delete</a>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <a>Add New</a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+        <button class="fab-button" nz-button nzShape="circle" nzSize="large" nzType="primary" [routerLink]="['/', 'pages', 'attributes', 'add']">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+
+
+        <nz-modal [(nzVisible)]="showAddAttrValue" nzTitle="The first Modal" (nzOnCancel)="showAddAttrValue = false" (nzOnOk)="showAddAttrValue = true">
+          <ng-container *nzModalContent>
+            <app-form-builder
+              [formFields]="attrValFormFields"
+              (onSubmit)="addAttrValue($event)"
+              submitButtonPosRight="center"
+            ></app-form-builder>
+          </ng-container>
+        </nz-modal>

@@ -1,0 +1,13 @@
+<p *ngIf="showSectionHeader" class="section-header">{{ sectionHeaderText }}</p>
+
+<div class="main-select-content">
+        <nz-cascader
+                [ngStyle]="{'width.%': width}"
+                [nzOptions]="nzOptions"
+                [nzLabelProperty]="'title'"
+                [nzValueProperty]="'id'"
+                [nzShowSearch]="true"
+                [(ngModel)]="values"
+        ></nz-cascader>
+        <button nz-button nzType="primary" (click)="sendFormattedData()">{{ submitText }}</button>
+</div>

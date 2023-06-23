@@ -1,0 +1,97 @@
+<nz-layout class="app-layout">
+        <nz-sider class="menu-sidebar"
+                  nzCollapsible
+                  nzWidth="256px"
+                  nzBreakpoint="md"
+                  [(nzCollapsed)]="isCollapsed"
+                  [nzTrigger]="null">
+          <div class="sidebar-logo">
+            <a href="https://ng.ant.design/" target="_blank">
+              <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+              <h1>WIGBD</h1>
+            </a>
+          </div>
+          <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+              <ul>
+                <li nz-menu-item nzMatchRouter>
+                  <a routerLink="/pages/welcome">Welcome</a>
+                </li>
+                <!-- <li nz-menu-item nzMatchRouter>
+                  <a>Monitor</a>
+                </li>
+                <li nz-menu-item nzMatchRouter>
+                  <a>Workplace</a>
+                </li> -->
+              </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Reviews" nzIcon="file-done">
+              <ul>
+                <li nz-menu-item nzMatchRouter nzMatchRouterExact="/pages/review">
+                  <a routerLink="/pages/reviews">All Reviews</a>
+                </li>
+                <li nz-menu-item nzMatchRouter="/pages/claims/add">
+                  <a routerLink="/pages/reviews/create">Add new Review</a>
+                </li>
+              </ul>
+            </li> 
+            <li nz-submenu nzOpen nzTitle="Attributes" nzIcon="branches">
+              <ul>
+                <li nz-menu-item nzMatchRouter nzMatchRouterExact="/pages/attributes">
+                  <a routerLink="/pages/attributes">All Attributes</a>
+                </li>
+                <li nz-menu-item nzMatchRouter="/pages/attributes/add">
+                  <a routerLink="/pages/attributes/add">Add new Attributes</a>
+                </li>
+              </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Category" nzIcon="unordered-list">
+              <ul>
+                <li nz-menu-item nzMatchRouter nzMatchRouterExact="/pages/categories">
+                  <a routerLink="/pages/categories">All Category</a>
+                </li>
+                <li nz-menu-item nzMatchRouter="/pages/categories/add">
+                  <a routerLink="/pages/categories/add">Add new Category</a>
+                </li>
+              </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Products" nzIcon="shopping">
+              <ul>
+                <li nz-menu-item nzMatchRouter nzMatchRouterExact="/pages/products">
+                  <a routerLink="/pages/products">All Products</a>
+                </li>
+                <li nz-menu-item nzMatchRouter="/pages/products/add">
+                  <a routerLink="/pages/products/add">Add new Product</a>
+                </li>
+              </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Users" nzIcon="user">
+              <ul>
+                <li nz-menu-item nzMatchRouter nzMatchRouterExact="/pages/users">
+                  <a routerLink="/pages/users">All Users</a>
+                </li>
+                <li nz-menu-item nzMatchRouter="/pages/users/add">
+                  <a routerLink="/pages/users/add">Add new User</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nz-sider>
+        <nz-layout>
+          <nz-header>
+            <div class="app-header">
+              <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                  <i class="trigger"
+                     nz-icon
+                     [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+                  ></i>
+              </span>
+            </div>
+          </nz-header>
+          <nz-content>
+            <div class="inner-content">
+              <router-outlet></router-outlet>
+            </div>
+          </nz-content>
+        </nz-layout>
+      </nz-layout>

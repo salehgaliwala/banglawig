@@ -1,0 +1,36 @@
+<div *ngIf="isLoading" class="spinner">
+        <nz-spin [nzSpinning]="isLoading" nzSimple></nz-spin>
+</div>
+
+<nz-input-group  nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="input search text" [(ngModel)]="title"  />
+</nz-input-group>
+<ng-template #suffixButton>
+        <button nz-button nzType="primary" nzSize="large" nzSearch (click)="loadProducts()">Search</button>
+</ng-template>
+
+<nz-table *ngIf="!isLoading" #catTable [nzData]="products" [nzShowPagination]="true" (nzPageIndexChange)="pageChanged($event)" [nzTotal]="totalProducts" nzBordered nzSize="small">
+        <thead>
+          <tr>
+                <th>id</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>description</th>
+                <th>createdAt</th>
+                <th nzRight>Edit</th>
+                <th nzRight>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of catTable.data; let i = index">
+            <td>{{ data.id }}</td>
+            <td><nz-avatar nzIcon="user" nzShape="square" [nzSrc]="data.featureImage"></nz-avatar></td>
+            <td>{{ data.title }}</td>
+            <td>{{ data.description }}</td>
+            <td>{{ data.createdAt | date: 'MMM d, y' }}</td>
+            <td nzRight><button nz-button nzType="primary" nzSize="small" (click)="editProduct(data.id)" nzDanger><i nz-icon nzType="edit" nzTheme="fill"></i></button></td>
+            <td nzRight><button nz-button nzType="primary" nzSize="small" (click)="deleteProduct(data.id)" nzDanger><i nz-icon nzType="delete" nzTheme="fill"></i></button></td>
+          </tr>
+        </tbody>
+      </nz-table>
+<!-- <app-image-uploader [multi]="true" [caseId]="3" caseType="product"></app-image-uploader> -->

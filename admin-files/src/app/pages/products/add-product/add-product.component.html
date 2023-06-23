@@ -1,0 +1,40 @@
+
+<nz-steps class="step-header" [nzCurrent]="currentStep">
+        <nz-step nzTitle="product info"></nz-step>
+        <nz-step nzTitle="Select Categories"></nz-step>
+        <nz-step nzTitle="Upload Images"></nz-step>
+        <nz-step nzTitle="variation details"></nz-step>
+        <nz-step nzTitle="Done"></nz-step>
+</nz-steps>
+
+<nz-divider></nz-divider>
+
+<div class="step-content">
+  
+  <app-product-form [hidden]="currentStep !== 0" (onCreateProduct)="getProductDetails($event)"></app-product-form>
+
+  <app-choose-category [hidden]="currentStep !== 1" [productId]="product ? product.id : 31" submitText="Save & Continue" (onAddedCategories)="categoriesAdded($event)" ></app-choose-category>
+
+  <app-image-uploader *ngIf="currentStep === 2" [multi]="true" [caseType]="'product'" [caseId]="product ? product.id : 0"></app-image-uploader>
+  <!-- <app-variation-form *ngIf="currentStep === 2 && product" [product]="product" ></app-variation-form> -->
+  <app-variation-step *ngIf="currentStep === 3" [productId]="product ? product.id : 31" [productTitle]="product ? product.title : 'p2-any'" ></app-variation-step>
+
+
+  <nz-result  *ngIf="currentStep === 4"
+    nzStatus="success"
+    nzTitle="Successfully created product with variations"
+  >
+    <div nz-result-extra>
+      <button nz-button nzType="primary" [routerLink]="['/', 'pages', 'welcome']">Go Home</button>
+      <button nz-button (click)="addNewProductStep()">create new product</button>
+    </div>
+  </nz-result>
+</div>
+
+<div class="step-footer" *ngIf="currentStep !== 0">
+  <button class="next-btn" nz-button [nzType]="'primary'" (click)="prevStep()">Previous</button>
+  <button *ngIf="currentStep !== 4 && currentStep !== 1" class="next-btn" nz-button [nzType]="'primary'" (click)="nextStep()">Next</button>
+</div>
+        
+
+      

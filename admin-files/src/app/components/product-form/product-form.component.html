@@ -1,0 +1,28 @@
+<p *ngIf="showSectionHeader" class="section-header">{{ sectionHeaderText }}</p>
+
+<form nz-form *ngIf="productForm" [formGroup]="productForm" class="ant-advanced-search-form" (ngSubmit)="submit()">
+        <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="16" nzOffset="4">
+                        <nz-form-item *ngFor="let item of formFields; let i = index">
+                                <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.name">{{item.label}}</nz-form-label>
+                                <nz-form-control [nzSm]="14" [nzXs]="24">
+                                        <input *ngIf="item.type === 'text'" nz-input [placeholder]="item.placeholder" [formControlName]="item.name" [attr.id]="i" />
+                                        <nz-input-number *ngIf="item.type === 'number'" [formControlName]="item.name" [attr.id]="i"></nz-input-number>
+                                        <nz-select *ngIf="item.type === 'select'" nzShowSearch nzAllowClear [nzPlaceHolder]="item.placeholder" [formControlName]="item.name">
+                                                <nz-option *ngFor="let opt of item.options" [nzValue]="opt.id" [nzLabel]="opt.title"></nz-option>
+                                        </nz-select>
+                                        <app-image-uploader 
+                                                *ngIf="item.type === 'image'"
+                                                [multi]="false"
+                                                caseType="product"
+                                                [caseId]="0"
+                                                (onSelectSingleImage)="onSelectFeatureImage($event)"
+                                        ></app-image-uploader>
+                                </nz-form-control>
+                        </nz-form-item>
+                </div>
+        </div>
+        <div [ngStyle]="{display: 'flex', 'justify-content': submitButtonPosRight ? 'end' : 'start'}">
+                <button [disabled]="!productForm.valid" nz-button [nzType]="'primary'" type="submit">Save & Continue</button>
+        </div>
+      </form>

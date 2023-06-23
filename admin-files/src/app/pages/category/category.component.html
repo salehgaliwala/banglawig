@@ -1,0 +1,58 @@
+<nz-table #catTable [nzData]="categoryAll" [nzShowPagination]="true" [nzTotal]="categoriesCount" nzBordered nzSize="small">
+        <thead>
+          <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>description</th>
+                <th>parentId</th>
+                <th>createdAt</th>
+                <th nzRight>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of catTable.data; let i = index">
+            <td>{{ data.id }}</td>
+            <td>{{ data.title }}</td>
+            <td>{{ data.description }}</td>
+            <td>{{ data.parentId }}</td>
+            <td>{{ data.createdAt | date: 'MMM d, y' }}</td>
+            <td nzRight><button nz-button nzType="primary" nzSize="small" (click)="editCategory(i)" nzDanger><i nz-icon nzType="edit" nzTheme="fill"></i></button></td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button> -->
+      <nz-modal [(nzVisible)]="isModalOpen" nzTitle="Edit Category" (nzOnCancel)="closeModal()" nzOkText="Update Category" (nzOnOk)="updateCategory()">
+        <ng-container *nzModalContent>
+                <form nz-form *ngIf="addCategoryForm" [formGroup]="addCategoryForm" class="ant-advanced-search-form">
+                        <div nz-row [nzGutter]="24">
+                                <div nz-col [nzSpan]="4"></div>
+                                <div nz-col [nzSpan]="16">
+                                        <nz-form-item>
+                                                <nz-form-label nzFor="title">Title</nz-form-label>
+                                                <nz-form-control>
+                                                        <input nz-input placeholder="Category Name *" formControlName="title" [attr.id]="1" />
+                                                </nz-form-control>
+                                        </nz-form-item>
+                                        <nz-form-item>
+                                                <nz-form-label nzFor="description">Description</nz-form-label>
+                                                <nz-form-control>
+                                                        <input nz-input placeholder="Category Description *" formControlName="description" [attr.id]="2" />
+                                                </nz-form-control>
+                                        </nz-form-item>
+                                        <nz-form-item>
+                                                <nz-form-label nzFor="parentId">Parent Category</nz-form-label>
+                                                <nz-form-control>
+                                                        <nz-select nzShowSearch nzAllowClear formControlName="parentId" nzPlaceHolder="Select Parent Category *">
+                                                                <nz-option [nzValue]="0" nzLabel="No Parent"></nz-option>
+                                                                <nz-option *ngFor="let cat of categoryAll" [nzValue]="cat.id" [nzLabel]="cat.title"></nz-option>
+                                                        </nz-select>
+                                                </nz-form-control>
+                                        </nz-form-item>
+                                        <br/>
+                                        <!-- <button [disabled]="!addCategoryForm.valid" nz-button [nzType]="'primary'" (click)="addCategory()">Add Category</button> -->
+                                </div>
+                        </div>
+                        <div nz-col [nzSpan]="4"></div>
+                      </form>
+        </ng-container>
+      </nz-modal>

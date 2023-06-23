@@ -1,0 +1,18 @@
+<div class="container">
+  <h4> Review Images Upload</h4>  
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+
+
+    <div class="form-group">
+        <label for="file">File</label>
+        <input formControlName="file" id="file" type="file" multiple class="form-control"
+            (change)="onFileChange($event)">
+        
+    </div>
+
+    <div class="preview">
+    <img *ngFor="let img of images" [src]="img"  style="height: 100px;" >
+</div>
+    <button class="btn btn-primary" [disabled]="myForm.invalid" type="submit">Done</button>
+</form>
+</div>

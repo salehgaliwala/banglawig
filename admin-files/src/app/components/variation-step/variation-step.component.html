@@ -1,0 +1,13 @@
+<p *ngIf="showSectionHeader" class="section-header">{{ sectionHeaderText }}</p>
+
+
+<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Add New Variation</span></button>
+<br/>
+<br/>
+<app-variation-list [variationList]="variationList"></app-variation-list>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="closeModal()" (nzOnOk)="closeModal()">
+  <ng-container *nzModalContent>
+    <app-variation-form (onVariationAdded)="handleNewVariation($event)" *ngIf="productId" [productId]="productId" [productTitle]="productTitle"></app-variation-form>
+  </ng-container>
+</nz-modal>
+<br />

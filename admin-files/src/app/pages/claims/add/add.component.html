@@ -1,0 +1,52 @@
+<p class="section-header">Add New Claim</p>
+
+<form nz-form [formGroup]="addClaimForm" class="ant-advanced-search-form">
+        <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                        <nz-form-item>
+                                <nz-form-label nzFor="userId">on behalf of</nz-form-label>
+                                <nz-form-control>
+                                        <nz-select nzShowSearch nzAllowClear (nzOnSearch)="onSearchUsers($event)" formControlName="userId" nzPlaceHolder="Select email">
+                                                <nz-option *ngFor="let user of users" [nzValue]="user.id" [nzLabel]="user.email"></nz-option>
+                                        </nz-select>
+                                </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                                <nz-form-label nzFor="type">Product Id</nz-form-label>
+                                <nz-form-control>
+                                        <nz-select formControlName="type" nzPlaceHolder="Select Type">
+                                                <nz-option nzValue="117" nzLabel="individual"></nz-option>
+                                                <nz-option nzValue="119" nzLabel="business"></nz-option>
+                                        </nz-select>
+                                </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                                <nz-form-label nzFor="name">Title</nz-form-label>
+                                <nz-form-control>
+                                        <input nz-input placeholder="Title" formControlName="title" [attr.id]="1" />
+                                </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                                <nz-form-label nzFor="address">Description</nz-form-label>
+                                <nz-form-control>
+                                        <input nz-input placeholder="description" formControlName="address" [attr.id]="1" />
+                                </nz-form-control>
+                        </nz-form-item>
+                        
+                </div>
+               
+                <div nz-col [nzSpan]="12" formGroupName="claimsDetail">
+                        
+                      
+                        <br/>
+                        <br/>
+                        <br/>
+                        <button nz-button [nzType]="'primary'" (click)="addClaim()">Add Review</button>
+                        <button nz-button (click)="reset()">Clear</button>
+                </div>
+                <!-- <div nz-col [nzSpan]="8"></div>
+                <div nz-col [nzSpan]="24" class="search-area">
+
+                </div> -->
+        </div>
+      </form>

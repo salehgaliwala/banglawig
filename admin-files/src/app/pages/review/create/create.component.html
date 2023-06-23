@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Create New Reviews</h1>
+
+    <a href="#" routerLink="/review/index" class="btn btn-primary">Back</a>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input formControlName="title" id="title" type="text" class="form-control">
+            <div *ngIf="f['title'].touched && f['title'].invalid" class="alert alert-danger">
+                <div *ngIf="f['title'].errors && f['title'].errors['required']">Title is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="productId">Product ID:</label>
+            <select formControlName="productId"  id="productId" class="form-control">
+                    <option *ngFor="let option of Product" [value]="option.id">{{ option.title }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea formControlName="description" id="description" type="text" class="form-control">
+            </textarea>
+            <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+                <div *ngIf="f['description'].errors && f['description'].errors['required']">description is required.</div>
+            </div>
+        </div>
+      
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

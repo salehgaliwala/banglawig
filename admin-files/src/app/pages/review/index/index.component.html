@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Customer Feedbacks</h2>
+
+    <a href="#" routerLink="/review/create/" class="btn btn-success">Create New Review</a>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Product ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th width="220px">Action</th>
+        </tr>
+        <tr *ngFor="let review of reviews">
+            <td>{{ review.id }}</td>
+            <td>{{ review.productId }}</td>
+            <td>{{ review.title }}</td>
+            <td>{{ review.description }}</td>
+            <td>             
+                <a href="#" style="color: #fff; border-color: #40a9ff; background: #40a9ff;font-size: 14px;border: none;border-radius: 0px;  margin-right: 10px;padding: 5px;" [routerLink]="['/pages/reviews/', review.id, 'edit']" class="btn btn-primary">Edit</a>
+                <button style="background-color: red !important;font-size: 14px;border: none;border-radius: 0px;  margin-right: 10px;padding: 5px;"  type="button" (click)="deleteReview(review.id)" class="btn btn-danger">Delete</button>
+            </td>   
+        </tr>
+    </table>
+</div>

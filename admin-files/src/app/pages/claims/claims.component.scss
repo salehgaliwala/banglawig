@@ -1,0 +1,108 @@
+
+.status{
+        button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                        font-size: 10px;
+                        text-transform: capitalize;
+                        font-weight: bold;
+                }
+        }
+}
+
+
+.pending{
+        color: #fff;
+        border-color: #13a7d8;
+        background: #13a7d8;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.incomplete{
+        color: #fff;
+        border-color: #bd6633;
+        background: #bd6633;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.lodged{
+        color: #fff;
+        border-color: #7d33bd;
+        background: #7d33bd;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.unpaid{
+        color: #fff;
+        border-color: #cb2323;
+        background: #cb2323;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.paid{
+        color: #fff;
+        border-color: #43be12;
+        background: #43be12;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.closed{
+        color: #fff;
+        border-color: #909390;
+        background: #909390;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.ready{
+        color: #fff;
+        border-color: #d01167;
+        background: #d01167;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.success-btn {
+        color: #fff;
+        border-color: #52d011;
+        background: #52d011;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
+.referenceNumber{
+        font-size: 12px;
+}
+
+
+
+
+.ant-advanced-search-form {
+        padding: 24px;
+        background: #fbfbfb;
+        border: 1px solid #d9d9d9;
+        border-radius: 6px;
+}
+
+[nz-form-label] {
+        overflow: visible;
+}
+
+button {
+        margin-left: 8px;
+}
+
+.search-area {
+        text-align: right;
+      }
+th {
+        text-transform: capitalize;
+}
